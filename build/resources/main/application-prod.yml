@@ -21,5 +21,7 @@ spring:
               non_contextual_creation: true
           show_sql: true
           format_sql: true
+server:
+  port: ${PORT:8080}
 storage.config:
   base.path: "/home/marcin/uploading"
