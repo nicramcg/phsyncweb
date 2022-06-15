@@ -55,7 +55,9 @@ public class ProgressFileService {
             progressFile.setLocalDateTime(LocalDateTime.now());
             progressFileRepository.save(progressFile);
 
-            String basePath = storageEnvVariables.getBaseFileStoragePath() + File.separator + userId;
+            String baseFileStoragePath = storageEnvVariables.getBaseFileStoragePath();
+            FileUtils.prepareDir(baseFileStoragePath);
+            String basePath =  baseFileStoragePath + File.separator + userId;
             FileUtils.prepareDir(basePath);
             String targetFile = basePath + File.separator + FileUtils.getFileNameWithoutExtension(originalFilename) + "_" + progressFile.getId() + extension;
             try {
