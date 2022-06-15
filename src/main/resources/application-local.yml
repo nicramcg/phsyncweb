@@ -1,0 +1,23 @@
+spring:
+  #  h2.console:
+  #    enabled: true\q
+  #    path: '/console'
+  datasource:
+    url: 'jdbc:postgresql://localhost:5432/phsync-test'
+    username: 'phsync01'
+    password: 'Passw0rd!'
+    driver-class-name: 'org.postgresql.Driver'
+  jpa:
+    database-platform: 'org.hibernate.dialect.PostgreSQL95Dialect'
+    hibernate:
+      ddl-auto: update
+      use-new-id-generator-mappings: true
+      properties:
+        hibernate:
+          jdbc:
+            lob:
+              non_contextual_creation: true
+          show_sql: true
+          format_sql: true
+storage.config:
+  base.path: "/home/marcin/uploading"
