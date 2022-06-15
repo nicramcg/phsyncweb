@@ -25,6 +25,8 @@ import java.util.logging.Logger;
 public class ProgressFileService {
     private final ProgressFileRepository progressFileRepository;
     private final StorageEnvVariables storageEnvVariables;
+    private final Logger LOGGER = Logger.getLogger(ProgressFileService.class.getName());
+
 
 
     public ProgressFileService(ProgressFileRepository progressFileRepository, StorageEnvVariables storageEnvVariables) {
@@ -59,6 +61,7 @@ public class ProgressFileService {
             FileUtils.prepareDir(baseFileStoragePath);
             String basePath =  baseFileStoragePath + File.separator + userId;
             FileUtils.prepareDir(basePath);
+            LOGGER.info("Base path exists: " + Files.exists(Paths.get(baseFileStoragePath)));
             String targetFile = basePath + File.separator + FileUtils.getFileNameWithoutExtension(originalFilename) + "_" + progressFile.getId() + extension;
             try {
                 copyFile(file.getBytes(), targetFile);
