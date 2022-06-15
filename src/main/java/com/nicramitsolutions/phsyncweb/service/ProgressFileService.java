@@ -55,6 +55,7 @@ public class ProgressFileService {
             progressFile.setFileName(originalFilename);
             progressFile.setExtension(extension);
             progressFile.setLocalDateTime(LocalDateTime.now());
+            progressFile.setFileNameUuid(FileUtils.getFileNameWithoutExtension(originalFilename) + "_" + progressFile.getId());
             progressFileRepository.save(progressFile);
 
             String baseFileStoragePath = storageEnvVariables.getBaseFileStoragePath();
@@ -62,7 +63,7 @@ public class ProgressFileService {
             String basePath =  baseFileStoragePath + File.separator + userId;
             FileUtils.prepareDir(basePath);
             LOGGER.info("Base path exists: " + Files.exists(Paths.get(baseFileStoragePath)));
-            String targetFile = basePath + File.separator + FileUtils.getFileNameWithoutExtension(originalFilename) + "_" + progressFile.getId() + extension;
+            String targetFile = basePath + File.separator + progressFile.getFileNameUuid() + extension;
             try {
                 copyFile(file.getBytes(), targetFile);
                 if (Files.exists(Paths.get(targetFile))) {
@@ -94,7 +95,7 @@ public class ProgressFileService {
         try {
             Path path = Paths.get(storageEnvVariables.getBaseFileStoragePath()
                     + File.separator + userId
-                    + File.separator + fileOnServer.get().getFileName());
+                    + File.separator + fileOnServer.get().getFileNameUuid() + fileOnServer.get().getExtension());
             return FileUtils.readBytes(path);
         } catch (IOException e) {
             Logger.getLogger(ProgressFileService.class.getName()).log(Level.INFO, e.toString());

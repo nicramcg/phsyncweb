@@ -10,6 +10,7 @@ public class ProgressFile {
     private String fileName;
     private Long userId;
     private String extension;
+    private String fileNameUuid;
 
     public ProgressFile() {
     }
@@ -56,5 +57,13 @@ public class ProgressFile {
 
     public void setExtension(String extension) {
         this.extension = extension;
+    }
+
+    public String getFileNameUuid() {
+        return fileNameUuid;
+    }
+
+    public void setFileNameUuid(String fileNameUuid) {
+        this.fileNameUuid = fileNameUuid;
     }
 }
