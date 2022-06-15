@@ -13,10 +13,13 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Service
 public class ProgressFileService {
@@ -76,5 +79,21 @@ public class ProgressFileService {
         BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(destination));
         stream.write(data);
         stream.close();
+    }
+
+    public byte[] getLatestFile(Long userId) {
+        Optional<ProgressFile> fileOnServer = progressFileRepository.findTop1ByUserIdOrderByLocalDateTimeDesc(userId);
+        if(!fileOnServer.isPresent()) {
+            return new byte[0];
+        }
+        try {
+            Path path = Paths.get(storageEnvVariables.getBaseFileStoragePath()
+                    + File.separator + userId
+                    + File.separator + fileOnServer.get().getFileName());
+            return FileUtils.readBytes(path);
+        } catch (IOException e) {
+            Logger.getLogger(ProgressFileService.class.getName()).log(Level.INFO, e.toString());
+        }
+        return new byte[0];
     }
 }
