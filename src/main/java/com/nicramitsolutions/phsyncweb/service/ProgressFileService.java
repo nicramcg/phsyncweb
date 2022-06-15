@@ -34,7 +34,7 @@ public class ProgressFileService {
         UploadingResult uploadingResult = new UploadingResult();
         Optional<ProgressFile> fileOnServer = progressFileRepository.findTop1ByUserIdOrderByLocalDateTimeDesc(userId);
         boolean uploadIsReq = false;
-        if (fileOnServer.isEmpty()) {
+        if (!fileOnServer.isPresent()) {
             uploadIsReq = true;
         } else {
             LocalDateTime lastModifiedDt = LocalDateTime.parse(lastModifiedDtTxt, DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
