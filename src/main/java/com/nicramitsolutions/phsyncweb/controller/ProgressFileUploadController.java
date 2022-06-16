@@ -41,4 +41,9 @@ public class ProgressFileUploadController {
         String latestFileAsBase64 = progressFileService.getLatestFileAsBase64(token);
         return latestFileAsBase64;
     }
+
+    @GetMapping("/test/text")
+    public ResponseEntity<?> testText() {
+        return ResponseEntity.ok("Test");
+    }
 }
