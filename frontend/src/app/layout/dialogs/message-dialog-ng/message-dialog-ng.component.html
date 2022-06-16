@@ -1,0 +1,20 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title">PhSync</h4>
+        <button type="button" class="close no-outline-btn" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span><span
+            class="sr-only">Close</span></button>
+    </div>
+    <div class="modal-body">
+        <p>{{question | translate}}</p>
+    </div>
+    <div class="modal-footer">
+        <button mat-raised-button
+                type="button"
+                color="primary"
+                class="default-color-btn-c"
+                (click)="activeModal.close(true)">Ok</button>
+<!--        <button type="button" class="btn btn-primary"-->
+<!--                (click)="activeModal.close(true)">Ok</button>-->
+    </div>
+</div>

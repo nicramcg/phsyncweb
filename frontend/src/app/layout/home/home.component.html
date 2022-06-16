@@ -1,0 +1,35 @@
+<div fxLayout="row wrap">
+    <div fxFlex="100%">
+        <h4 *ngIf="token">Token: {{token?.token}}</h4>
+    </div>
+</div>
+<div fxLayout="row wrap">
+    <div fxFlex="100%">
+        <mat-card fxFlex="100%">
+            <mat-card-content>
+                <mat-table [dataSource]="filesListDataSource"
+                           matSort #sortDashboards="matSort"
+                           matSortActive="id"
+                           matSortDirection="desc" matSortDisableClear>
+                    <ng-container matColumnDef="fileName">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>{{'NAME' | translate}}</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element?.fileName}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="fileNameUuid">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>{{'NAME' | translate}}</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element?.fileNameUuid}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="localDateTime">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>{{'DATE' | translate}}</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element?.localDateTime}}</mat-cell>
+                    </ng-container>
+                    <mat-header-row *matHeaderRowDef="filesListDisplayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: filesListDisplayedColumns;"></mat-row>
+                </mat-table>
+                <mat-paginator class="border-top" #paginatorDashboards='matPaginator'
+                               [length]="filesListDataSource?.total" [pageSize]="30"
+                               [pageSizeOptions]="[30, 50, 100]" showFirstLastButtons></mat-paginator>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

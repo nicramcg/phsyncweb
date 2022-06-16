@@ -1,14 +1,15 @@
 package com.nicramitsolutions.phsyncweb.controller;
 
-import com.nicramitsolutions.phsyncweb.data.AppUser;
 import com.nicramitsolutions.phsyncweb.service.AppUserService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/app-user")
+@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 public class AppUserController {
     private final AppUserService appUserService;
 
@@ -17,10 +18,9 @@ public class AppUserController {
         this.appUserService = appUserService;
     }
 
-//    @GetMapping("/add")
-//    public ResponseEntity<?> getAllAppUsers(AppUser user) {
-//        appUserService.addUser(user);
-//        return ResponseEntity.ok(user);
-//    }
+    @GetMapping("/my-token")
+    public ResponseEntity<?> getMyToken() {
+        return ResponseEntity.ok(appUserService.currentUserGetAssignedToken());
+    }
 
 }

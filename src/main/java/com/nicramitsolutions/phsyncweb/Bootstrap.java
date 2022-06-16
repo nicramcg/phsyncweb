@@ -1,17 +1,26 @@
 package com.nicramitsolutions.phsyncweb;
 
 import com.nicramitsolutions.phsyncweb.data.AppUser;
+import com.nicramitsolutions.phsyncweb.data.UserRole;
 import com.nicramitsolutions.phsyncweb.repository.AppUserRepository;
+import com.nicramitsolutions.phsyncweb.service.AppUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
 
 @Component
 public class Bootstrap implements CommandLineRunner {
-    private final AppUserRepository appUserRepository;
+    @Autowired
+    private AppUserRepository appUserRepository;
 
-    public Bootstrap(AppUserRepository appUserRepository) {
-        this.appUserRepository = appUserRepository;
-    }
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
+    @Autowired
+    private AppUserService appUserService;
 
     @Override
     public void run(String... args) throws Exception {
@@ -27,14 +36,12 @@ public class Bootstrap implements CommandLineRunner {
         if (user == null) {
             user = new AppUser();
             user.setUserName("marcin");
+            user.setPassword(passwordEncoder.encode("test"));
+            user.setFirstName("Marcin");
+            user.setLastName("G");
+            user.setRoles(Arrays.asList(new UserRole("ROLE_ADMIN")));
+            user.setAssignedToken(appUserService.createNewToken());
             appUserRepository.save(user);
-        }
-
-        AppUser secondUser = appUserRepository.findTop1ByUserNameIgnoreCase("sylwia");
-        if (secondUser == null) {
-            secondUser = new AppUser();
-            secondUser.setUserName("sylwia");
-            appUserRepository.save(secondUser);
         }
     }
 }

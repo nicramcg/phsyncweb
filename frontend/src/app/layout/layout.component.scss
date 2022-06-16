@@ -1,0 +1,60 @@
+//.example-container {
+//    position: absolute;
+//    top: 0;
+//    bottom: 0;
+//    left: 0;
+//    right: 0;
+//    background: #eee;
+//}
+
+
+.example-container {
+    //height: 500px;
+    //height: 100%;
+    padding: 10px;
+    //border: 1px solid rgba(0, 0, 0, 0.5);
+}
+.example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.example-sidenav {
+    user-select: none;
+}
+.full-width {
+    width: 100%;
+}
+.menu-button {
+    transition: 300ms ease-in-out;
+    transform: rotate(0deg);
+}
+.menu-button.rotated {
+    transform: rotate(180deg);
+}
+.submenu {
+    overflow-y: hidden;
+    transition: transform 300ms ease;
+    transform: scaleY(0);
+    transform-origin: top;
+    padding-left: 30px;
+}
+.submenu.expanded {
+    transform: scaleY(1);
+}
+
+.mat-toolbar {
+    background-image: linear-gradient(to right, rgb(64, 153, 255), rgb(115, 180, 255));
+}
+
+
+.calculated-width {
+    width: -webkit-calc(100% - 500px);
+    width: -moz-calc(100% - 240px);
+    width: calc(100% - 240px);
+}
+
+.normal-width {
+    width: 100%;
+}

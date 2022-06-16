@@ -8,15 +8,30 @@ group = 'com.nicramitsolutions'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
+processResources {
+	from ('frontend/dist') {
+		into 'public'
+	}
+}
+
+processResources.dependsOn('frontend:build')
+
 repositories {
 	mavenCentral()
 }
 
+bootJar {
+	launchScript{
+		properties 'logFolder': '/var/log/phsyncweb/'
+	}
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-//	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	runtimeOnly 'org.postgresql:postgresql'
+	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 }

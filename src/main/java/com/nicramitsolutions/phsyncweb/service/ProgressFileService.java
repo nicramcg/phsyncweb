@@ -1,10 +1,14 @@
 package com.nicramitsolutions.phsyncweb.service;
 
 import com.nicramitsolutions.phsyncweb.configstorage.StorageEnvVariables;
+import com.nicramitsolutions.phsyncweb.data.AppUser;
 import com.nicramitsolutions.phsyncweb.data.ProgressFile;
 import com.nicramitsolutions.phsyncweb.data.UploadingResult;
+import com.nicramitsolutions.phsyncweb.repository.AppUserRepository;
 import com.nicramitsolutions.phsyncweb.repository.ProgressFileRepository;
 import com.nicramitsolutions.phsyncweb.service.utils.FileUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,18 +30,25 @@ public class ProgressFileService {
     private final ProgressFileRepository progressFileRepository;
     private final StorageEnvVariables storageEnvVariables;
     private final Logger LOGGER = Logger.getLogger(ProgressFileService.class.getName());
+    private final CurrentUserService currentUserService;
+    private final AppUserRepository appUserRepository;
 
 
-
-    public ProgressFileService(ProgressFileRepository progressFileRepository, StorageEnvVariables storageEnvVariables) {
+    public ProgressFileService(ProgressFileRepository progressFileRepository, StorageEnvVariables storageEnvVariables, CurrentUserService currentUserService, AppUserRepository appUserRepository) {
         this.progressFileRepository = progressFileRepository;
         this.storageEnvVariables = storageEnvVariables;
+        this.currentUserService = currentUserService;
+        this.appUserRepository = appUserRepository;
     }
 
 
-    public UploadingResult uploadFile(MultipartFile file, Long userId, String lastModifiedDtTxt) {
+    public UploadingResult uploadFile(MultipartFile file, String token, String lastModifiedDtTxt) {
         UploadingResult uploadingResult = new UploadingResult();
-        Optional<ProgressFile> fileOnServer = progressFileRepository.findTop1ByUserIdOrderByLocalDateTimeDesc(userId);
+        AppUser user = appUserRepository.findTopByAssignedToken(token);
+        if (user == null) {
+            return uploadingResult;
+        }
+        Optional<ProgressFile> fileOnServer = progressFileRepository.findTop1ByUserIdOrderByLocalDateTimeDesc(user.getId());
         boolean uploadIsReq = false;
         if (!fileOnServer.isPresent()) {
             uploadIsReq = true;
@@ -51,16 +62,18 @@ public class ProgressFileService {
             String originalFilename = file.getOriginalFilename();
             String extension = FileUtils.getExtension(originalFilename);
             ProgressFile progressFile = new ProgressFile();
-            progressFile.setUserId(userId);
+            progressFile.setUserId(user.getId());
             progressFile.setFileName(originalFilename);
             progressFile.setExtension(extension);
             progressFile.setLocalDateTime(LocalDateTime.now());
+            progressFileRepository.save(progressFile);
             progressFile.setFileNameUuid(FileUtils.getFileNameWithoutExtension(originalFilename) + "_" + progressFile.getId());
             progressFileRepository.save(progressFile);
 
+
             String baseFileStoragePath = storageEnvVariables.getBaseFileStoragePath();
             FileUtils.prepareDir(baseFileStoragePath);
-            String basePath =  baseFileStoragePath + File.separator + userId;
+            String basePath = baseFileStoragePath + File.separator + user.getId();
             FileUtils.prepareDir(basePath);
             LOGGER.info("Base path exists: " + Files.exists(Paths.get(baseFileStoragePath)));
             String targetFile = basePath + File.separator + progressFile.getFileNameUuid() + extension;
@@ -87,19 +100,31 @@ public class ProgressFileService {
         stream.close();
     }
 
-    public byte[] getLatestFile(Long userId) {
-        Optional<ProgressFile> fileOnServer = progressFileRepository.findTop1ByUserIdOrderByLocalDateTimeDesc(userId);
-        if(!fileOnServer.isPresent()) {
+    public byte[] getLatestFile(String token) {
+        AppUser user = appUserRepository.findTopByAssignedToken(token);
+        if (user == null) {
+            return new byte[0];
+        }
+        Optional<ProgressFile> fileOnServer = progressFileRepository.findTop1ByUserIdOrderByLocalDateTimeDesc(user.getId());
+        if (!fileOnServer.isPresent()) {
             return new byte[0];
         }
         try {
             Path path = Paths.get(storageEnvVariables.getBaseFileStoragePath()
-                    + File.separator + userId
+                    + File.separator + user.getId()
                     + File.separator + fileOnServer.get().getFileNameUuid() + fileOnServer.get().getExtension());
             return FileUtils.readBytes(path);
         } catch (IOException e) {
             Logger.getLogger(ProgressFileService.class.getName()).log(Level.INFO, e.toString());
         }
         return new byte[0];
+    }
+
+    public Page<ProgressFile> getProgressFilesListForCurrentUser(Pageable pageable) {
+        AppUser currentUser = currentUserService.currentUser();
+        if (currentUser == null) {
+            return Page.empty();
+        }
+        return progressFileRepository.findAllByUserIdOrderByLocalDateTimeDesc(currentUser.getId(), pageable);
     }
 }

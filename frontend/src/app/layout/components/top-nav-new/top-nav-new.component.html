@@ -1,0 +1,16 @@
+<mat-toolbar color="primary" role="toolbar" class="main-header mat-elevation-z1 sticky-header fixed-header">
+    <mat-toolbar-row>
+        <button mat-button
+                style="outline: none"
+                class="board-btn-margin top-btn-color top-btn-board"
+                [routerLink]="['/home']"
+                routerLinkActive="top-btn-active">Dashboard</button>
+        <span class="flex-spacer"></span>
+        <button class="mat-button" *ngIf="userFromSession" style="outline: none">
+            {{userFromSession?.firstName}}&nbsp;{{userFromSession?.lastName}}
+        </button>
+        <button mat-icon-button (click)="onLoggedout()" class="no-outline-btn">
+            <mat-icon>exit_to_app</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>

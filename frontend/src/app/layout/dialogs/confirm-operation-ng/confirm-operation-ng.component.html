@@ -1,0 +1,30 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title">PhSync</h4>
+        <button type="button" class="close no-outline-btn" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span><span
+            class="sr-only">Close</span></button>
+    </div>
+    <div class="modal-body">
+        <p *ngIf="useTranslation">{{question | translate}}</p>
+        <p *ngIf="!useTranslation">{{question}}</p>
+    </div>
+    <div class="modal-footer">
+        <button mat-raised-button
+                type="button"
+                color="primary"
+                class="default-color-btn-c mr-3"
+                (click)="activeModal.close(true)">{{'YES' | translate}}</button>
+        <button mat-raised-button
+                color="warn"
+                class="default-cancel-btn-c"
+                type="button"
+                (click)="activeModal.close(false)">{{'CANCEL' | translate}}</button>
+<!--        <button type="button" class="btn btn-primary"-->
+<!--                (click)="activeModal.close(true)">{{'YES' | translate}}</button>-->
+<!--        <button type="button" class="btn btn-danger"-->
+<!--                data-dismiss="modal"-->
+<!--                (click)="activeModal.close(false)">{{'CANCEL' | translate}}</button>-->
+    </div>
+</div>
+

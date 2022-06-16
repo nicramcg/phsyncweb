@@ -1,0 +1,56 @@
+.mat-toolbar {
+    //background-image: linear-gradient(to right, rgb(64, 153, 255), rgb(115, 180, 255));
+    background-image: linear-gradient(rgb(64, 153, 255), rgb(115, 180, 255));
+    //#4099FF to #73B4FF
+}
+
+.board-btn-margin {
+   margin-left: 45px;
+}
+
+
+.user-name-div {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 12px;
+}
+
+.top-btn-color {
+    background-color: #5FA4F5;
+}
+
+.top-btn-active {
+    background-color: #4094F4;
+}
+
+.top-btn-board {
+    border-radius: 0;
+    border-top-left-radius: 10px;
+    bottom: -15px;
+    min-width: 8em;
+}
+
+.top-btn-board-without-left {
+    border-radius: 0;
+    //border-top-left-radius: 10px;
+    bottom: -15px;
+    min-width: 8em;
+}
+
+.top-btn-radar {
+    border-radius: 0;
+    bottom: -15px;
+    border-top-right-radius: 10px;
+    min-width: 8em;
+}
+
+.no-outline-btn {
+    outline: none!important;
+}
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100% !important;
+}

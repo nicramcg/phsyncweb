@@ -1,0 +1,127 @@
+@import "variables";
+@import "fonts";
+html,
+body {
+    height: 100%;
+    margin: 0;
+    //font-family: 'Fontil Sans';
+    //background: #f3f3f3;
+    //background: #F0F0F7;
+    //background-color: #F1EFF7;
+    font-family: 'Titillium Web', sans-serif;
+    background-color: #f3f3f3;
+}
+
+.main-container {
+    position: absolute;
+    top: 64px;
+    //left: 250px;
+    left: 10px;
+    right: 0;
+    bottom: 0;
+    padding: 20px;
+    justify-content: center;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.default-color-accent {
+    color: $primary-color;
+    //color: #666;
+}
+
+.column {
+    margin: 0 20px;
+}
+.custom-modal .mat-dialog-container{
+    height: 250px;
+    width: 350px;
+}
+.report-modal .mat-dialog-container {
+    padding: 40px;
+    width: 530px!important;
+}
+.timepicker {
+
+    .timepicker__header {
+        background-color: $primary-color !important;
+    }
+
+    .clock-face__clock-hand {
+        background-color: $primary-color !important;
+
+        &::after {
+            background-color: $primary-color !important;
+        }
+
+        &::before {
+            border-color: $primary-color !important;
+        }
+    }
+
+    .clock-face__number {
+        > span.active {
+            background-color: $primary-color !important;
+        }
+    }
+
+    button:not(.timepicker-dial__item) {
+        color: $primary-color !important;
+    }
+}
+.purple-icon {
+    color: $primary-color
+}
+.purple-icon svg {
+    fill: $primary-color;
+}
+@mixin mat-inputs-primary-color {
+    ::ng-deep {
+        .mat-form-field-appearance-outline .mat-form-field-outline {
+            color: $primary-color !important;
+        }
+
+        // mat-input focused color
+        .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+            color: $primary-color !important;
+        }
+
+        // mat-input error outline color
+        .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
+            color: $primary-color !important;
+            opacity: 0.8 !important;
+        }
+
+        // mat-input caret color
+        .mat-input-element {
+            caret-color: $primary-color !important;
+        }
+
+        // mat-input error caret color
+        .mat-form-field-invalid .mat-input-element, .mat-warn .mat-input-element {
+            caret-color: $primary-color !important;
+        }
+
+        // mat-label normal state style
+        .mat-form-field-label {
+            color: $primary-color !important;
+        }
+
+        // mat-label focused style
+        .mat-form-field.mat-focused .mat-form-field-label {
+            color: $primary-color !important;
+        }
+
+        // mat-label error style
+        .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+            color: $primary-color !important;
+        }
+    }
+}
+
+.custom-modal-order-settings .mat-dialog-container{
+    height: 600px;
+    //width: 350px;
+}

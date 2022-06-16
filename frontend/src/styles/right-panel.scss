@@ -1,0 +1,104 @@
+//PANEL RIGHT AND CONTENT
+.table-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    min-width: 300px;
+    margin-top: 0px;
+}
+
+.mat-table {
+    overflow: auto;
+    max-height: 500px;
+}
+
+.gray {
+    background-color: #E5E5E5
+}
+
+.mat-row, mat-header-row, mat-footer-row {
+    border-style: none !important;
+}
+
+//.mat-header-cell {
+//    vertical-align: bottom;
+//}
+
+.label-title-2 {
+    color: #000000;
+    font-size: 25px;
+    font-family: 'Titillium Web';
+}
+
+.div-right-panel {
+    //width: 36vw;
+    width: 57vw;
+    //min-height: 800px;
+    //min-height: 100%;
+    //border: 2px solid #53A3FF;
+}
+
+.mat-drawer {
+    border: 2px solid #53A3FF;
+}
+
+.main-image-right-panel {
+    //padding: 20px 10px 10px 10px;
+    margin: 8px auto;
+    //margin: 8px 4px 4px 4px;
+    box-sizing: border-box;
+    height: auto;
+    max-width: 100%;
+    //max-width: 400px;
+    max-height: 400px;
+    //border: 2px solid #53A3FF;
+}
+
+
+//PANEL RIGHT END
+
+.img-with-icons {
+    position: relative;
+}
+
+.img-with-icons > a {
+    position: absolute;
+    //background: white;
+    top: 10px;
+    //left: 0;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+.c-edit-icon {
+    cursor: pointer;
+    color: #3F51B5;
+}
+.c-icon-trash {
+    color: #f44336;
+}
+
+.c-icon-times {
+    color: #6c757d;
+}
+
+.c-edit-icon:hover {
+    color: #1f2e82;
+}
+.c-icon-trash:hover {
+    color: #c82333;
+}
+
+.c-icon-times:hover {
+    color: #5a6268;
+}
+
+.c-save-icon {
+    cursor: pointer;
+    color: #53A3FF;
+}
+
+.c-save-icon:hover {
+    color: #1f2e82;
+}
+

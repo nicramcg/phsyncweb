@@ -1,0 +1,212 @@
+@import 'material';
+@import 'main';
+@import 'utils';
+@import 'responsive';
+@import '~material-design-icons/iconfont/material-icons.css';
+//@import "~@ng-select/ng-select/themes/material.theme.css";
+@import '~@ng-matero/extensions/theming';
+
+@import "src/styles/theme";
+
+@include material-extensions-theme($theme);
+//@include material-extensions-experimental-theme($theme);
+
+mat-form-field .mat-form-field {
+    &-underline {
+        position: static;
+    }
+    &-subscript-wrapper {
+        position: static;
+    }
+}
+
+.as-title {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 24px;
+    //font-weight: 500;
+    //color: #2F2E50;//#33274E;
+    color: #666;
+    font-weight: bold;
+    //background-color: red;
+}
+
+
+
+
+/* Custom Scrollbar using CSS */
+.custom-scrollbar-css {
+    overflow-y: scroll;
+}
+
+/* scrollbar width */
+.custom-scrollbar-css::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* scrollbar track */
+.custom-scrollbar-css::-webkit-scrollbar-track {
+    background: #eee;
+}
+
+/* scrollbar handle */
+.custom-scrollbar-css::-webkit-scrollbar-thumb {
+    //border-radius: 1rem;
+    //
+    //background: #666; /* Old browsers */
+    //background: -moz-linear-gradient(top, #666 0%, #666 100%); /* FF3.6-15 */
+    //background: -webkit-linear-gradient(top, #666 0%,#666 100%); /* Chrome10-25,Safari5.1-6 */
+    //background: linear-gradient(to bottom, #666 0%,#666 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#666', endColorstr='#667',GradientType=0 );
+
+    border-radius: 1rem;
+
+    background: #4099ff; /* Old browsers */
+    background: -moz-linear-gradient(top, #4099ff 0%, #4099ff 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #4099ff 0%,#4099ff 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #4099ff 0%,#4099ff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4099ff', endColorstr='#4099ff',GradientType=0 );
+}
+
+.c-attachment-icon {
+    vertical-align: middle;
+    cursor:pointer;
+    color: #4099ff;
+}
+
+.c-attachment-icon-delete {
+    vertical-align: middle;
+    cursor:pointer;
+    color: #f44336;
+}
+
+.c-attachment-icon:hover {
+    color: $primary-color;
+}
+
+.c-attachment-icon-delete:hover {
+    color: $primary-color;
+}
+
+.angular-editor-toolbar button i {
+    font-family: FontAwesome !important;
+    //color: #474d6d !important;
+}
+
+//.image-loaded + .spinner {
+//    display:none;
+//}
+
+//TEXT EDITOR CLASSES
+.quote {
+    color: #000000;
+    font-style: italic;
+}
+
+.redText {
+    color: Red;
+    font-size: 12px;
+    font-family: Arial;
+}
+
+h1.titleText {
+    color: #000000;
+    text-align: left;
+    margin-top: 40px;
+    font-weight: normal;
+}
+//TEXT EDITOR CLASSES END
+
+.ql-container {
+    height: 200px;
+}
+
+//NEW IM
+.flex-spacer {
+    flex: 1 1 auto;
+    //flex: 1
+}
+
+.left-menu-padding {
+    padding-right: 30px;
+}
+
+.flex-spacer-2 {
+    flex: 0.16;
+}
+
+.no-outline-btn {
+    outline: none!important;
+}
+
+.df-font-family {
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.edit-icon-color {
+    color: #3F51B5;
+}
+
+th[sortable] {
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+th[sortable].desc:before,
+
+th[sortable].asc:before {
+    font-family: FontAwesome;
+    content: "\f176";
+    /*display: block;*/
+    float: right;
+    /*margin-right: 22px;*/
+}
+
+th[sortable].desc:before {
+    font-family: FontAwesome;
+    content: "\f175";
+    /*transform: rotate(180deg);*/
+    /*-ms-transform: rotate(180deg);*/
+    /*content: '';*/
+}
+
+.custom-info-icon-color {
+    //color: #5FA4F5;
+    color: #4099ff;
+}
+
+
+/* Custom Scrollbar using CSS */
+.custom-scrollbar-tags-css {
+    //max-height: 85px;
+    //overflow-y: auto!important;
+    //overflow-x: hidden!important;
+}
+
+/* scrollbar width */
+.custom-scrollbar-tags-css::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* scrollbar track */
+.custom-scrollbar-tags-css::-webkit-scrollbar-track {
+    background: #eee;
+}
+
+/* scrollbar handle */
+.custom-scrollbar-tags-css::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+
+    background: #666; /* Old browsers */
+    background: -moz-linear-gradient(top, #666 0%, #666 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #666 0%,#666 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #666 0%,#666 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#666', endColorstr='#667',GradientType=0 );
+
+    //border-radius: 1rem;
+    //background: #4099ff; /* Old browsers */
+    //background: -moz-linear-gradient(top, #4099ff 0%, #4099ff 100%); /* FF3.6-15 */
+    //background: -webkit-linear-gradient(top, #4099ff 0%,#4099ff 100%); /* Chrome10-25,Safari5.1-6 */
+    //background: linear-gradient(to bottom, #4099ff 0%,#4099ff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4099ff', endColorstr='#4099ff',GradientType=0 );
+}

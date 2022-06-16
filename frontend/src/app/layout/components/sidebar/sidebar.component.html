@@ -1,0 +1,33 @@
+<div class="sidebar-container" id="sidebar">
+    <mat-nav-list>
+<!--        <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/dashboard']">-->
+<!--            <mat-icon class="sidenav-icon">dashboard</mat-icon> {{ 'Dashboard' | translate }}-->
+<!--        </a>-->
+<!--        <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/ideas']">-->
+<!--            <mat-icon class="sidenav-icon">dashboard</mat-icon> {{ 'IDEAS' | translate }}-->
+<!--        </a>-->
+        <a mat-list-item
+           [routerLinkActive]="'active'"
+           [routerLink]="['/challenges']">
+            <mat-icon class="sidenav-icon" style="color: #FFFFFF"
+                      matTooltip="{{'CHALLENGES' | translate}}"
+                      [matTooltipPosition]="'above'">list</mat-icon>
+<!--            {{ 'CHALLENGES' | translate }}-->
+        </a>
+<!--        <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/my/pending/ideas']">-->
+<!--            <mat-icon class="sidenav-icon">visibility_off</mat-icon> {{ 'MY_PENDING_IDEAS' | translate }}-->
+<!--        </a>-->
+<!--        <a mat-list-item (click)="toggleAdminMenu()" *ngIf="displayAdminMenu">-->
+<!--            <mat-icon class="sidenav-icon" mat-list-icon>settings</mat-icon>-->
+<!--            {{'ADMINISTRATION' | translate}}-->
+<!--            <mat-icon *ngIf="!showAdminMenuOpts">chevron_right</mat-icon>-->
+<!--            <mat-icon *ngIf="showAdminMenuOpts">expand_more</mat-icon>-->
+<!--        </a>-->
+<!--        <mat-nav-list class="sidenav-submenu" *ngIf="showAdminMenuOpts">-->
+<!--            <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/profile']">-->
+<!--                <mat-icon class="sidenav-icon">account_box</mat-icon>-->
+<!--                {{ 'CHALLENGES' | translate }}-->
+<!--            </a>-->
+<!--        </mat-nav-list>-->
+    </mat-nav-list>
+</div>

@@ -1,0 +1,46 @@
+<div style="display:flex; flex-direction:row; height: 100%">
+<!--    <div fxFlex="50%" class="div-left-c"></div>-->
+    <div fxFlex="100%" >
+        <div class="main-div-c">
+<!--            <mat-card style="box-shadow: none!important;">-->
+            <mat-card style="width: 30%;">
+                <mat-card-title style="text-align: center">
+                </mat-card-title>
+<!--                <mat-card-title>-->
+<!--                    <span class="as-title-txt-main">{{'SIGN_IN' | translate}}</span>-->
+<!--                </mat-card-title>-->
+<!--                <mat-card-subtitle>Welcome back! Please login to your account</mat-card-subtitle>-->
+                <mat-card-content>
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" fxFlex>
+                        <div fxFlex  fxlayout="row" fxlayout.lt-md="column">
+                            <div fxFlexFill>
+                                <mat-form-field class="w-100">
+                                    <input trim="blur" matInput formControlName="username" placeholder="{{'USERNAME' | translate}}">
+                                    <mat-error *ngIf="f.username.errors?.email"><strong>{{'INCORRECT_EMAIL_ADDRESS' | translate}}</strong></mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div fxFlex  fxLayout="row" fxLayout.lt-md="column">
+                            <div fxFlexFill>
+                                <mat-form-field class="w-100">
+                                    <input trim="blur" matInput [type]="passwordHide ? 'password' : 'text'" formControlName="password" placeholder="{{'PASSWORD' | translate}}"/>
+                                    <mat-icon class="purple-icon align-middle c-cursor" matSuffix (click)="passwordHide = !passwordHide">{{passwordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    <mat-error *ngIf="loginForm.get('password').errors != null && loginForm.get('password').errors.wrongData"><strong>{{ alert | translate}}</strong></mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div fxFlex  fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px">
+                            <button type="submit" mat-raised-button color="primary" class="w-100 default-color-btn-c">{{'LOGIN' | translate}}</button>
+                        </div>
+                    </form>
+                </mat-card-content>
+                <mat-card-title>
+                    <span class="as-title-txt">
+                        <span class="idea-m-s-text">Ph</span>Sync
+                    </span>
+                </mat-card-title>
+            </mat-card>
+        </div>
+
+    </div>
+</div>

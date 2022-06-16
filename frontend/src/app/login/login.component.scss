@@ -1,0 +1,110 @@
+//.login-page {
+//    display: flex;
+//    align-items: center;
+//    justify-content: center;
+//    height: 100%;
+//    position: relative;
+//    .content {
+//        z-index: 1;
+//        display: flex;
+//        align-items: center;
+//        justify-content: center;
+//        .app-name {
+//            margin-top: 0px;
+//            padding-bottom: 10px;
+//            font-size: 32px;
+//        }
+//        .login-form {
+//            padding: 40px;
+//            background: #fff;
+//            width: 500px;
+//            box-shadow: 0 0 10px #ddd;
+//            input:-webkit-autofill {
+//                -webkit-box-shadow: 0 0 0 30px white inset;
+//            }
+//        }
+//    }
+//
+//    &:after {
+//        content: '';
+//        background: #fff;
+//        position: absolute;
+//        top: 0;
+//        left: 0;
+//        bottom: 50%;
+//        right: 0;
+//    }
+//    &:before {
+//        content: '';
+//        background: #3f51b5;
+//        position: absolute;
+//        top: 50%;
+//        left: 0;
+//        bottom: 0;
+//        right: 0;
+//    }
+//}
+
+.text-center {
+    text-align: center;
+}
+.w-100 {
+    width: 100%;
+}
+
+//NEW
+.main-div-c{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //background-color: #FFFFFF;
+    background-color: #2196f3;
+}
+
+.default-color-btn-c {
+    width: 12em;
+    height: 3em;
+    //background-color: #2F2E50;
+    background-color: #4099ff;
+    border-color: #4099ff;
+    color: #fff;
+}
+
+::ng-deep .mat-checkbox-checked .mat-checkbox-background,
+::ng-deep .mat-checkbox-indeterminate .mat-checkbox-background {
+    background-color: #2F2E50 !important;
+}
+
+.div-left-c {
+    background-image: url('../../assets/images/backgroundnew.png');
+    background-position: center top;
+    background-size: 100% auto;
+}
+
+.idea-m-s-text {
+    //color: red;
+    font-weight: bold!important;
+}
+
+.as-title-txt {
+    font-family: Fontil Sans, monospace;
+    font-size: 16px;
+    //font-weight: 500;
+    //color: #2F2E50;//#33274E;
+    color: #666;
+    //font-weight: bold;
+}
+
+.as-title-txt-main {
+    font-family: Fontil Sans, monospace;
+    font-size: 24px;
+    //font-weight: 500;
+    //color: #2F2E50;//#33274E;
+    color: #666;
+    font-weight: bold;
+}
+
+.c-cursor {
+    cursor: pointer;
+}
