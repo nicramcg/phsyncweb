@@ -34,4 +34,13 @@ public class ProgressFileUploadController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+    @GetMapping("/file/latest/base64/{token}")
+    public ResponseEntity<?> getLatestProgressFile64(@PathVariable("token") String token) {
+        String latestFileAsBase64 = progressFileService.getLatestFileAsBase64(token);
+        if(latestFileAsBase64 != null) {
+            return ResponseEntity.ok(latestFileAsBase64);
+        }
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }

@@ -21,6 +21,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Base64;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -127,4 +128,12 @@ public class ProgressFileService {
         }
         return progressFileRepository.findAllByUserIdOrderByLocalDateTimeDesc(currentUser.getId(), pageable);
     }
+
+    public String getLatestFileAsBase64(String token) { {
+        byte[] bytes = getLatestFile(token);
+        if(bytes != null && bytes.length > 0) {
+            return Base64.getEncoder().encodeToString(bytes);
+        }
+        return null;
+    }}
 }
