@@ -43,6 +43,18 @@ public class Bootstrap implements CommandLineRunner {
             user.setAssignedToken(appUserService.createNewToken());
             appUserRepository.save(user);
         }
+
+        AppUser user2 = appUserRepository.findTop1ByUserNameIgnoreCase("sylwia");
+        if (user2 == null) {
+            user2 = new AppUser();
+            user2.setUserName("sylwia");
+            user2.setPassword(passwordEncoder.encode("sylwiag"));
+            user2.setFirstName("Sylwia");
+            user2.setLastName("G");
+            user2.setRoles(Arrays.asList(new UserRole("ROLE_ADMIN")));
+            user2.setAssignedToken(appUserService.createNewToken());
+            appUserRepository.save(user2);
+        }
     }
 }
 
