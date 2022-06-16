@@ -2,6 +2,7 @@ package com.nicramitsolutions.phsyncweb.controller;
 
 import com.nicramitsolutions.phsyncweb.data.UploadingResult;
 import com.nicramitsolutions.phsyncweb.service.ProgressFileService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -35,9 +36,9 @@ public class ProgressFileUploadController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping("/file/latest-base/{token}")
+    @GetMapping("/latest-file/{token}")
     public String getLatestProgressFile64(@PathVariable("token") String token) {
-        System.out.println("In request");
-        return progressFileService.getLatestFileAsBase64(token);
+        String latestFileAsBase64 = progressFileService.getLatestFileAsBase64(token);
+        return latestFileAsBase64;
     }
 }
