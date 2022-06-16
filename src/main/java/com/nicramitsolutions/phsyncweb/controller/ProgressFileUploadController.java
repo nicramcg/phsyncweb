@@ -2,7 +2,6 @@ package com.nicramitsolutions.phsyncweb.controller;
 
 import com.nicramitsolutions.phsyncweb.data.UploadingResult;
 import com.nicramitsolutions.phsyncweb.service.ProgressFileService;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
