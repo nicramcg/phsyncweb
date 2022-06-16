@@ -54,7 +54,6 @@ import {MessageDialogNgComponent} from "./layout/dialogs/message-dialog-ng/messa
 import {NgIdleKeepaliveModule} from "@ng-idle/keepalive";
 import {MatTabsModule} from "@angular/material/tabs";
 import {TranslationLoader} from "./services/translation-loader";
-import {ColorPickerModule} from "ngx-color-picker";
 import {FileUploadService} from "./services/file-upload-service";
 import {FilesListService} from "./services/files-list-service";
 // import {SafeHtmlPipe} from "./safe-html-pipe";
@@ -129,8 +128,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         StatModule,
         MatSelectModule,
         MatDatepickerModule,
-        MatRadioModule, MatTabsModule,
-        ColorPickerModule],
+        MatRadioModule, MatTabsModule],
     providers: [AuthService,
         {provide: MAT_DATE_LOCALE, useValue: 'de-AT'},
         {provide: DateAdapter, useClass: MomentDateAdapter}, // should be fine now

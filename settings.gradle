@@ -1,2 +1,2 @@
-rootProject.name = 'phsyncweb'
+//rootProject.name = 'phsyncweb'
 include 'frontend'

@@ -60,8 +60,6 @@ import {ArraySortTranslatedPipe} from "./array-sort-translated-pipe";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {FilterPipe} from "./filter-pipe";
 import {CdkDetailRowDirective} from "./cdk-detail-row.directive";
-import {NgxMatColorPickerModule} from "@angular-material-components/color-picker";
-import {ColorPickerModule} from "ngx-color-picker";
 import {HomeComponent} from './home/home.component';
 
 @NgModule({
@@ -112,8 +110,6 @@ import {HomeComponent} from './home/home.component';
         MatTabsModule,
         ScrollingModule,
         MatSlideToggleModule,
-        NgxMatColorPickerModule,
-        ColorPickerModule,
     ],
     exports: [],
     declarations: [
