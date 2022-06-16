@@ -18,11 +18,10 @@ public class ProgressFileUploadController {
         this.progressFileService = progressFileService;
     }
 
-    @PostMapping("/file/upload/{token}/{lastModifiedDtTxt}")
+    @PostMapping("/file/upload/{token}")
     public ResponseEntity<?> upload(@RequestParam("file") MultipartFile file,
-                                    @PathVariable("token") String token,
-                                    @PathVariable("lastModifiedDtTxt") String lastModifiedDtTxt) {
-        UploadingResult uploadingResult = progressFileService.uploadFile(file, token, lastModifiedDtTxt);
+                                    @PathVariable("token") String token) {
+        UploadingResult uploadingResult = progressFileService.uploadFile(file, token);
         return ResponseEntity.ok(uploadingResult);
     }
 

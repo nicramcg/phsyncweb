@@ -42,22 +42,13 @@ public class ProgressFileService {
     }
 
 
-    public UploadingResult uploadFile(MultipartFile file, String token, String lastModifiedDtTxt) {
+    public UploadingResult uploadFile(MultipartFile file, String token) {
         UploadingResult uploadingResult = new UploadingResult();
         AppUser user = appUserRepository.findTopByAssignedToken(token);
         if (user == null) {
             return uploadingResult;
         }
-        Optional<ProgressFile> fileOnServer = progressFileRepository.findTop1ByUserIdOrderByLocalDateTimeDesc(user.getId());
-        boolean uploadIsReq = false;
-        if (!fileOnServer.isPresent()) {
-            uploadIsReq = true;
-        } else {
-            LocalDateTime lastModifiedDt = LocalDateTime.parse(lastModifiedDtTxt, DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
-            if (fileOnServer.get().getLocalDateTime().isBefore(lastModifiedDt)) {
-                uploadIsReq = true;
-            }
-        }
+        boolean uploadIsReq = true;
         if (uploadIsReq) {
             String originalFilename = file.getOriginalFilename();
             String extension = FileUtils.getExtension(originalFilename);
@@ -88,7 +79,6 @@ public class ProgressFileService {
             } catch (IOException e) {
                 e.printStackTrace();
                 progressFileRepository.delete(progressFile);
-                ;
             }
         }
         return uploadingResult;
