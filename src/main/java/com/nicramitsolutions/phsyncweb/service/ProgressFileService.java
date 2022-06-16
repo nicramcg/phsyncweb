@@ -132,6 +132,7 @@ public class ProgressFileService {
     public String getLatestFileAsBase64(String token) { {
         byte[] bytes = getLatestFile(token);
         if(bytes != null && bytes.length > 0) {
+            System.out.println("Not empty bytes");
             return Base64.getEncoder().encodeToString(bytes);
         }
         return null;
