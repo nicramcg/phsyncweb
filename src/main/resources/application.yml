@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: 'prod'
+    active: 'local'
   main:
     allow-circular-references: true
 server:
